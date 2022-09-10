@@ -25,7 +25,7 @@ fi
 
 cd $PACKAGE
 
-LAMBDA_FUNCTION = "../etl/lambda_function.py"
+LAMBDA_FUNCTION = ../../etl/lambda_function.py
 
 if [-f $LAMBDA_FUNCTION]
 then
