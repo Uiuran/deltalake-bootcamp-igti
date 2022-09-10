@@ -6,11 +6,11 @@ resource "aws_iam_role" "lambda" {
         "Version": "2012-10-17",
         "Statement": [
             {
-                "Action": "sts:AssumeRole"
+                "Action": "sts:AssumeRole",
                 "Principal":{
                     "Service" : "lambda.amazonaws.com"
                 },
-                "Effect": "Allow"
+                "Effect": "Allow",
                 "Sid": "AssumeRole"
             }
         ]
@@ -57,7 +57,7 @@ resource "aws_iam_policy" "lambda"{
             {
                 "Effect": "Allow",
                 "Action": "iam:PassRole",
-                "Resource": ["arn:aws:iam::179819489780:role/EMR_Default_Role",
+                "Resource": ["arn:aws:iam::179819489780:role/EMR_DefaultRole",
                 "arn:aws:iam::179819489780:role/EMR_EC2_DefaultRole"]                
             }
         ]
