@@ -1,7 +1,7 @@
 name: Test
 on:
   pull_request:
-    branches: [main]
+    branches: [master]
 
 jobs:
   deploy:
@@ -34,6 +34,7 @@ jobs:
         env:
           COMMAND_IAC: terraform
         run: |
+          cd iac
           $COMMAND_IAC init
           $COMMAND_IAC validate
           $COMMAND_IAC plan

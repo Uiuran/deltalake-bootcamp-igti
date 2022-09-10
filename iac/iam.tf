@@ -3,14 +3,14 @@ resource "aws_iam_role" "lambda" {
 
     assume_role_policy = <<EOF
     {
-        "Version": "2012-10-17"
+        "Version": "2012-10-17",
         "Statement": [
             {
-                "Action": "sts:AssumeRole"
+                "Action": "sts:AssumeRole",
                 "Principal":{
                     "Service" : "lambda.amazonaws.com"
                 },
-                "Effect": "Allow"
+                "Effect": "Allow",
                 "Sid": "AssumeRole"
             }
         ]
@@ -28,41 +28,46 @@ resource "aws_iam_policy" "lambda"{
     description = "Provides write permissions to CloudWatch logs, S3 buckets and EMR steps"
 
     policy = <<EOF
-    {
-        "Version": "2012-10-17"
-        "Statement": [
-            {
-                "Effect": "Allow",
-                "Action":[
-                    "logs:CreateLogGroup",
-                    "logs:CreateLogStream",
-                    "logs:PutLogEvents"
-                ],
-                "Resource": "*"
-            },
-            {
-                "Effect": "Allow",
-                "Action":[
-                    "s3:*"
-                ],
-                "Resource": "*"
-            },
-            {
-                "Effect": "Allow",
-                "Action":[
-                    "elasticmapreduce:*"
-                ],
-                "Resource": "*"
-            },
-            {
-                "Effect": "Allow",
-                "Action": "iam:PassRole",
-                "Resource": ["arn:aws:iam::179819489780:role/EMR_Default_Role",
-                "arn:aws:iam::179819489780:role/EMR_EC2_DefaultRole"]                
-            }
-        ]
-    }
-    EOF    
+{
+	"Version": "2012-10-17",
+	"Statement": [{
+			"Principal": { "AWS": "arn:aws:iam::179819489780:user/penalvaadm" },
+			"Effect": "Allow",
+			"Action": [
+				"logs:CreateLogGroup",
+				"logs:CreateLogStream",
+				"logs:PutLogEvents"
+			],
+			"Resource": "*"
+		},
+		{
+			"Principal": { "AWS": "arn:aws:iam::179819489780:user/penalvaadm" },
+			"Effect": "Allow",
+			"Action": [
+				"s3:*"
+			],
+			"Resource": "*"
+		},
+		{
+			"Principal": { "AWS": "arn:aws:iam::179819489780:user/penalvaadm" },
+			"Effect": "Allow",
+			"Action": [
+				"elasticmapreduce:*"
+			],
+			"Resource": "*"
+		},
+		{
+			"Principal": { "AWS": "arn:aws:iam::179819489780:user/penalvaadm" },
+			"Effect": "Allow",
+			"Action": ["iam:PassRole"],
+			"Resource": [
+				"arn:aws:iam::179819489780:role/EMR_DefaultRole",
+				"arn:aws:iam::179819489780:role/EMR_EC2_DefaultRole"
+			]
+		}
+	]
+}
+EOF    
 }
 
 resource "aws_iam_role_policy_attachment" "lambda_attach"{
