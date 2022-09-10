@@ -20,12 +20,12 @@ then
     echo " Instalando dependencias em "$FILE_REQUIREMENTS"... "
     pip install --target ./package -r $FILE_REQUIREMENTS
     echo " Dependencias instaladas com sucesso."
-    echo "======"
+    echo "======"    
 fi
 
 cd $PACKAGE
 
-LAMBDA_FUNCTION = "../../etl/lambda_function.py"
+LAMBDA_FUNCTION = "../etl/lambda_function.py"
 
 if [-f $LAMBDA_FUNCTION]
 then
