@@ -31,7 +31,6 @@ resource "aws_iam_policy" "lambda"{
 {
 	"Version": "2012-10-17",
 	"Statement": [{
-			"Principal": { "AWS": "arn:aws:iam::179819489780:user/penalvaadm" },
 			"Effect": "Allow",
 			"Action": [
 				"logs:CreateLogGroup",
@@ -41,7 +40,6 @@ resource "aws_iam_policy" "lambda"{
 			"Resource": "*"
 		},
 		{
-			"Principal": { "AWS": "arn:aws:iam::179819489780:user/penalvaadm" },
 			"Effect": "Allow",
 			"Action": [
 				"s3:*"
@@ -49,7 +47,6 @@ resource "aws_iam_policy" "lambda"{
 			"Resource": "*"
 		},
 		{
-			"Principal": { "AWS": "arn:aws:iam::179819489780:user/penalvaadm" },
 			"Effect": "Allow",
 			"Action": [
 				"elasticmapreduce:*"
@@ -57,7 +54,6 @@ resource "aws_iam_policy" "lambda"{
 			"Resource": "*"
 		},
 		{
-			"Principal": { "AWS": "arn:aws:iam::179819489780:user/penalvaadm" },
 			"Effect": "Allow",
 			"Action": ["iam:PassRole"],
 			"Resource": [
