@@ -7,7 +7,7 @@ def handler(event, context):
     client = boto3.client('emr', region_name='sa-east-1')
 
     cluster_id = client.run_job_flow(
-                Name='EMR-Ney-IGTI-delta',
+                Name='EMR-Penalvad-IGTI-delta',
                 ServiceRole='EMR_DefaultRole',
                 JobFlowRole='EMR_EC2_DefaultRole',
                 VisibleToAllUsers=True,
