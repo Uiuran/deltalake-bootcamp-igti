@@ -1,8 +1,10 @@
+#!/usr/bin/env bash
 cd iac
+
 
 PACKAGE="package"
 
-if [-d $PACKAGE]
+if [ -d $PACKAGE ]
 then
     "Diretório  "$PACKAGE" já existe."
 else
@@ -14,7 +16,7 @@ fi
 
 FILE_REQUIREMENTS=../etl/lambda_requirements.txt
 
-if [-f $FILE_REQUIREMENTS]
+if [ -f $FILE_REQUIREMENTS ]
 then
     echo "======="
     echo " Instalando dependencias em "$FILE_REQUIREMENTS"... "
@@ -25,15 +27,15 @@ fi
 
 cd $PACKAGE
 
-LAMBDA_FUNCTION = ../../etl/lambda_function.py
+LAMBDA_FUNCTION=../../etl/lambda_function.py
 
-if [-f $LAMBDA_FUNCTION]
+if [ -f $LAMBDA_FUNCTION ]
 then
     echo "=========="
     echo " Copiando função Handler ..."
     cp $LAMBDA_FUNCTION .
     echo " Compactando arquivo lambda_function_payload.zip ..."
-    zip -r9 ../lambda_function_payload.zip 
+    zip -r9 ../lambda_function_payload.zip .
     echo " Arquivo compactado com sucesso."
     echo " ==============  "
 fi
