@@ -1,0 +1,39 @@
+name: Test
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  deploy:
+    name: Deploy Datalake
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Python 3.8
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.8.0'
+
+      - name: Terraform
+        uses: hashicorp/setup-terraform@v1.2.1
+
+      - name: AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{secrets.AWS_ACCESS_KEY_ID}}
+          aws-secret-access-key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+          aws-region: sa-east-1
+
+      - name: Build Lambda Function Package
+        run: |
+          sh scripts/build_lambda.sh
+
+      - name: IAC Terraform Test
+        env:
+          COMMAND_IAC: terraform
+        run: |
+          $COMMAND_IAC init
+          $COMMAND_IAC validate
+          $COMMAND_IAC plan
