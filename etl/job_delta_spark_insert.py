@@ -18,7 +18,7 @@ enem = (
     .option("inferSchema", True)
     .option("header", True)
     .option("delimiter", ";")
-    .load("s3://datalake-igti-edc-penalvad/raw-data/MICRODADOS_ENEM_2020.csv")
+    .load("s3://datalake-igti-edc-penalvad/raw-data")
 )
 
 # Escreve a tabela em staging em formato delta
